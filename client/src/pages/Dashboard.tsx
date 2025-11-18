@@ -1,4 +1,4 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+// Autenticação removida
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -7,11 +7,11 @@ import { CheckCircle2, Circle, Clock, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Dashboard() {
-  const { user, loading: authLoading } = useAuth();
+  // Autenticação removida - site público
   const { data: modules, isLoading: modulesLoading } = trpc.modules.list.useQuery();
   const { data: progress, isLoading: progressLoading } = trpc.progress.getUserProgress.useQuery();
 
-  if (authLoading || modulesLoading || progressLoading) {
+  if (modulesLoading || progressLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -19,23 +19,7 @@ export default function Dashboard() {
     );
   }
 
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <Card className="max-w-md">
-          <CardHeader>
-            <CardTitle>Acesso Negado</CardTitle>
-            <CardDescription>Você precisa estar autenticado para acessar esta página.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Link href="/">
-              <Button>Voltar para Home</Button>
-            </Link>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
+  // Site público - sem verificação de autenticação
 
   const completedModules = progress?.filter((p) => p.completed === 1).length || 0;
   const totalModules = modules?.length || 0;
@@ -57,7 +41,7 @@ export default function Dashboard() {
               </h1>
             </Link>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">Olá, {user.name || user.email}</span>
+              <span className="text-sm text-muted-foreground">Bem-vindo!</span>
             </div>
           </div>
         </div>

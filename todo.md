@@ -41,3 +41,23 @@
 - [x] Configurar deploy para Vercel
 - [x] Criar documentação de codificação
 - [x] Preparar evidências para laudo de qualidade
+
+### Migração de Autenticação
+- [x] Substituir OAuth customizado por Auth0
+- [x] Atualizar variáveis de ambiente
+- [x] Testar fluxo de login/logout
+- [x] Documentar configuração do Auth0
+
+### Bugs a Corrigir
+- [x] Corrigir erro 404 na rota /api/auth/login
+
+- [ ] Corrigir erro 404 após callback do Auth0
+
+### Remoção de Autenticação e Limpeza
+- [x] Remover Auth0 do backend
+- [x] Remover componentes de autenticação do frontend
+- [x] Tornar todos os endpoints públicos
+- [x] Limpar documentação de referências a Manus
+- [x] Limpar documentação de referências a Vercel
+
+- [x] Remover código de autenticação não utilizado (useAuth, getLoginUrl, etc)

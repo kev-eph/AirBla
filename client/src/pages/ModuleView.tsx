@@ -1,4 +1,4 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+// Autenticação removida
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -13,7 +13,7 @@ import { toast } from "sonner";
 export default function ModuleView() {
   const { id } = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
-  const { user } = useAuth();
+  // Autenticação removida - site público
   const moduleId = parseInt(id || "0");
 
   const { data: module, isLoading: moduleLoading } = trpc.modules.getById.useQuery({ id: moduleId });
@@ -69,7 +69,7 @@ export default function ModuleView() {
   };
 
   const handleSubmitQuiz = async () => {
-    if (!currentQuiz || !user) return;
+    if (!currentQuiz) return;
 
     const selectedAnswer = selectedAnswers[currentQuiz.id];
     if (selectedAnswer === undefined) {
@@ -99,7 +99,7 @@ export default function ModuleView() {
   };
 
   const handleCompleteModule = async () => {
-    if (!user) return;
+    // Site público - sem verificação de usuário
 
     try {
       await markCompleteMutation.mutateAsync({ moduleId });

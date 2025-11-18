@@ -1,41 +1,23 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { APP_LOGO, APP_TITLE, getLoginUrl } from "@/const";
 import { BookOpen, Users, Zap, Target, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
-  const { user, loading, isAuthenticated } = useAuth();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            {APP_LOGO && <img src={APP_LOGO} alt={APP_TITLE} className="h-8 w-8" />}
-            <h1 className="text-xl font-bold text-foreground">{APP_TITLE}</h1>
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">A</span>
+            </div>
+            <h1 className="text-xl font-bold text-foreground">AirBLÁ Onboarding Platform</h1>
           </div>
-          <div>
-            {isAuthenticated ? (
-              <Link href="/dashboard">
-                <Button>Ir para Dashboard</Button>
-              </Link>
-            ) : (
-              <Button asChild>
-                <a href={getLoginUrl()}>Entrar</a>
-              </Button>
-            )}
-          </div>
+          <Link href="/dashboard">
+            <Button>Acessar Plataforma</Button>
+          </Link>
         </div>
       </header>
 
@@ -49,19 +31,11 @@ export default function Home() {
             Sua jornada de integração começa aqui. Conheça nossa cultura, valores e metodologias
             através de uma experiência interativa e envolvente.
           </p>
-          {isAuthenticated ? (
-            <Link href="/dashboard">
-              <Button size="lg" className="gap-2">
-                Começar Agora <ArrowRight className="h-5 w-5" />
-              </Button>
-            </Link>
-          ) : (
-            <Button size="lg" asChild className="gap-2">
-              <a href={getLoginUrl()}>
-                Começar Agora <ArrowRight className="h-5 w-5" />
-              </a>
+          <Link href="/dashboard">
+            <Button size="lg" className="gap-2">
+              Começar Agora <ArrowRight className="h-5 w-5" />
             </Button>
-          )}
+          </Link>
         </div>
       </section>
 
@@ -133,17 +107,11 @@ export default function Home() {
             Junte-se a centenas de colaboradores que já passaram pelo nosso processo de onboarding
             e estão fazendo a diferença na AirBLÁ.
           </p>
-          {isAuthenticated ? (
-            <Link href="/dashboard">
-              <Button size="lg" variant="default">
-                Acessar Plataforma
-              </Button>
-            </Link>
-          ) : (
-            <Button size="lg" variant="default" asChild>
-              <a href={getLoginUrl()}>Fazer Login</a>
+          <Link href="/dashboard">
+            <Button size="lg" variant="default">
+              Acessar Plataforma
             </Button>
-          )}
+          </Link>
         </div>
       </section>
 

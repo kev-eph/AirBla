@@ -15,7 +15,7 @@
 
 **O que testou e funcionou:**
 
-O sistema de autenticação OAuth foi testado com sucesso. O fluxo completo incluiu o redirecionamento para a página de login do Manus OAuth, autenticação bem-sucedida e retorno à aplicação com sessão ativa. O usuário autenticado conseguiu acessar o dashboard sem problemas. O sistema corretamente identifica usuários autenticados e não autenticados, exibindo botões apropriados na landing page ("Entrar" para não autenticados e "Ir para Dashboard" para autenticados). O cookie de sessão foi criado corretamente e persistiu entre navegações.
+O sistema foi testado com acesso público. O fluxo de navegação foi validado com sucesso, permitindo acesso direto ao dashboard e aos módulos sem necessidade de autenticação. Os usuários podem acessar todo o conteúdo da plataforma de forma livre. A navegação entre páginas funciona corretamente, com botões "Começar Agora" e "Acessar Plataforma" redirecionando adequadamente para o dashboard.
 
 **O que testou e não funcionou – O que deve ser corrigido:**
 
